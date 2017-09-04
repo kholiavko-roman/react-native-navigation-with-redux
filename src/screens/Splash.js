@@ -10,8 +10,33 @@ import { connect } from 'react-redux';
 
 class Splash extends Component {
   constructor(props) {
-		super(props);
+    super(props);
+    // this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
+
+//   onNavigatorEvent(event) {
+//     console.log('DEEP LINK');
+//     // handle a deep link
+//     if (event.type == 'DeepLink') {
+//         const parts = event.link.split('/'); // Link parts
+//         const payload = event.payload; // (optional) The payload
+
+//         if (parts == 'first') {
+//             // this.props.navigator.push({
+//             //     screen: "first"
+//             // });
+//         }
+
+//         if (parts == 'Screen2') {
+//             console.log('GO to SECOND');
+//             this.props.navigator.resetTo({
+//                 screen: "second",
+//                 title: "Second",
+//                 animationType: 'fade'
+//             });
+//         }
+//     }
+//   }
 
   componentWillMount() {
     console.log('Splash Screen');

@@ -1,53 +1,27 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
-export default class Navwithredux extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
+import {Provider} from "react-redux";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+import {registerScreens} from './src/screens';
+import configureStore from './src/store/configureStore';
+
+const store = configureStore();
+
+// screen related book keeping
+registerScreens(store, Provider);
+
+Navigation.startSingleScreenApp({
+    screen: {
+        screen: "splash",
+    },
+    drawer: {
+        left: {
+            screen: "drawer",
+        },
+        animationType: 'parallax',
+        //optional, iOS only, for MMDrawer: 'door', 'parallax', 'slide', 'slide-and-scale'
+        // for TheSideBar: 'airbnb', 'facebook', 'luvocracy','wunder-list'
+    },
+    animationType: 'fade'
 });
-
-AppRegistry.registerComponent('Navwithredux', () => Navwithredux);
